@@ -1,1 +1,1 @@
-Live link : https://molik-singla.github.io/practice-css-animations
+Live link : https://molik-singla.github.io/css-animations-practice
