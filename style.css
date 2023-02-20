@@ -1,0 +1,209 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root {
+    --cup_bg_color: #f5f5f5;
+}
+body {
+    width: 100%;
+    height: auto;
+}
+
+.animation_body {
+    width: 100%;
+    height: 100vh;
+    background-color: #607d8c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Animation - 1 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.cup_outside {
+    position: relative;
+    transform: scale(0.55);
+}
+
+.cup_body {
+    width: 320px;
+    height: 330px;
+    background-color: var(--cup_bg_color);
+    border-radius: 0 0 45% 45%;
+    position: relative;
+    z-index: 100;
+    box-shadow: 10px 7px 30px -3px #00000028;
+}
+
+.cup_top {
+    width: 100%;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--cup_bg_color);
+    position: absolute;
+    top: -40px;
+    padding: 6px;
+}
+.cup_top_inside {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 30%, rgba(245, 245, 245, 1) 100%);
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+.cup_top_inside_inside {
+    width: 100%;
+    height: 100%;
+    background-color: #ce6849dc;
+    border-radius: 100%;
+    position: absolute;
+    top: 40%;
+}
+
+.cup_handle {
+    width: 140px;
+    height: 180px;
+    background-color: transparent;
+    border: 20px solid var(--cup_bg_color);
+    position: absolute;
+    right: calc(-100% + 140px + 50px + 40px + 30px);
+    top: 60px;
+    border-left: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+
+    border-radius: 100%;
+    transform: rotate(40deg);
+}
+
+.cup_plate_outside {
+    background-color: var(--cup_bg_color);
+    width: 180%;
+    height: 200px;
+    position: absolute;
+    left: -40%;
+    bottom: -20%;
+    border-radius: 100%;
+    padding: 6px;
+}
+.cup_plate_inside {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(208, 208, 208, 0.8239670868347339) 72%, rgba(245, 245, 245, 1) 100%);
+    background-blend-mode: overlay;
+    border-radius: 100%;
+    box-shadow: 0px 0px 36px -4px #00000024;
+    display: flex;
+    justify-content: center;
+}
+.cup_plate_inside_inside {
+    width: 56%;
+    height: 50%;
+    border-radius: 100%;
+    position: relative;
+    top: 24%;
+    background: radial-gradient(rgba(0, 0, 0, 0.14), rgba(255, 255, 255, 0.2));
+}
+.vapours {
+    width: 80%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    gap: 10px;
+    top: 0%;
+    left: 10%;
+}
+
+.vapours_inside {
+    width: 50px;
+    height: 60px;
+    background-color: white;
+    border-radius: 50%;
+    animation: animate 2s linear infinite;
+    filter: blur(10px);
+    opacity: 0;
+    animation-delay: calc(var(--animate-delay-time) * -0.8s);
+}
+
+@keyframes animate {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-100px) scale(3);
+        opacity: 0.8;
+    }
+    95% {
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(-200px) scale(6);
+    }
+}
+
+/* Animation - 2 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+.road_2 {
+    background-color: black;
+    width: 90vw;
+    height: 260px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+}
+.road_2::before {
+    content: "";
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(to right, white 55%, transparent 45%);
+    background-size: 80px;
+    animation: animate-road_2 0.3s linear infinite;
+}
+@keyframes animate-road_2 {
+    0% {
+        background-position: 0px;
+    }
+    100% {
+        background-position: 80px;
+    }
+}
+
+/* Media Queries */
+
+@media screen and (min-width: 480px) {
+    .cup_outside {
+        position: relative;
+        transform: scale(0.7);
+    }
+    .road_2 {
+        width: 70vw;
+    }
+}
+@media screen and (min-width: 768px) {
+    .cup_outside {
+        position: relative;
+        transform: scale(1);
+    }
+    .road_2 {
+        width: 60vw;
+    }
+    .road_2::before {
+        background-size: 140px;
+    }
+    @keyframes animate-road_2 {
+        0% {
+            background-position: 0px;
+        }
+        100% {
+            background-position: 140px;
+        }
+    }
+}
